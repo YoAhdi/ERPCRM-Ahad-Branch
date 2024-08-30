@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}New Opportunity{% endblock %}
+
+{% block content %}
+
+<!-- Flashed message -->
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<a class="btn btn-secondary btn-lg" href="{{ url_for('opportunities')}}" role="button">Back</a>
+<h2 class="text-center"><strong>New Opportunity</strong></h2>
+<br>
+<div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.opportunity.label(class="form-label") }}
+        <p>{{ form.opportunity(class="form-control") }}</p>
+
+        {{ form.value.label(class="form-label") }}
+        <p>{{ form.value(class="form-control") }}</p>
+
+        {{ form.stage.label(class="form-label") }}
+        <p>{{ form.stage(class="form-control") }}</p>
+
+        {{ form.submit(class="btn btn-primary") }}
+
+    </form>
+</div>
+
+
+
+{% endblock %}

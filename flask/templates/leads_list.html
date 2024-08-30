@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Leads List{% endblock %}
+
+{% block content %}
+<!---7/31--->
+<!-- Flashed message -->
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+        {{message}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endfor %}
+
+<a class="btn btn-secondary btn-lg" href="{{ url_for('leads')}}" role="button">Back</a>
+<h2 class="text-center"><strong>Leads List</strong></h2>
+
+<br>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Position</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for account in accounts %}
+        <tr>
+            <th scope="row"><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">{{ Lead.CompanyName }}</th>
+            <td>{{ lead.FirstName }}</td>
+            <td>{{ lead.Position }}</td>
+        </tr>
+        {% endfor %}
+</table>
+
+
+{% endblock %}
